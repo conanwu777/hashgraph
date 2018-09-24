@@ -1,4 +1,4 @@
-# hashgraph
+# Hashgraph
 Simple implementation of the consensus algorithm Hashgraph with clear visualizer
 
 ## Compiling and running
@@ -21,12 +21,14 @@ In the project, we made an implementation in small scale of the full algorithm, 
 - When Bob receives the gossip, he updates his graph with all verifiable nodes Alice sent, and then he creates a new node and adds it to his own graph with two hashes linking it to the newest nodes in his and Alice's line (self-parent and gossip parent) This transaction documents the event of the gossip
 - All new nodes are colored **BLUE**
 - For computation efficiency, every once in a while there is a layer of special noces, i.e. **whitnesses** for each active player, colored **RED**, they will be where the heavy computation (seeing, voting) is focused on
-- When whitnesses are **strongly seen** by many players, they become **famous witnesses** (colored **YELLOW**)
+- When whitnesses are **strongly seen** by many players, they become **famous witnesses** (colored **YELLOW**); Occationally, some whitnesses may be voted **not famous**, those nodes will be colored **GREY** and will never be famous
 - When a new node is seen by all the **uniquely famous whitnesses** of a round, a consensus timestamp is put on and the node is considered approved (colored **GREEN**)
 - Eventually all authentic nodes (i.e. no forking created by members) would be approved with probablity 1; eventualy there will be no discarpency between members regarding the status of nodes, regardless of the fact that members never communicate the voting
 
 ### Picture 1: Breakdown of different types of nodes
 
 ### Picture 2: Strongly see
+- Node A can **see** node B if A is an ancestor of B and there is no fork between A and B
+- Node A can **strongly see** node B if A can see B with paths which collaboratively pass through nodes created by 2/3 of the population
 
 ### Picture 3: Vote famous
