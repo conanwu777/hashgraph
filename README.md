@@ -15,5 +15,18 @@ Hashgraph is considered a strong and more efficient alternative to current block
 
 In the project, we made an implementation in small scale of the full algorithm, with varying number for population (the speed and visualizing works best for 4-10 people)
 
-## Simple outline of the gossip & approval process
+## Outline of gossip & approval process
+- Each entity(pony) in the population is represented by a vertical line
+- When Alice gossips to Bob, she looks through bob's subgraph in her current graph, finds all the new nodes in her graph but not in the subgraph, makes a list and send all of them over
+- When Bob receives the gossip, he updates his graph with all verifiable nodes Alice sent, and then he creates a new node and adds it to his own graph with two hashes linking it to the newest nodes in his and Alice's line (self-parent and gossip parent) This transaction documents the event of the gossip
+- All new nodes are colored **BLUE**
+- For computation efficiency, every once in a while there is a layer of special noces, i.e. **whitnesses** for each active player, colored **RED**, they will be where the heavy computation (seeing, voting) is focused on
+- When whitnesses are **strongly seen** by many players, they become **famous witnesses** (colored **YELLOW**)
+- When a new node is seen by all the **uniquely famous whitnesses** of a round, a consensus timestamp is put on and the node is considered approved (colored **GREEN**)
+- Eventually all authentic nodes (i.e. no forking created by members) would be approved with probablity 1; eventualy there will be no discarpency between members regarding the status of nodes, regardless of the fact that members never communicate the voting
 
+### Picture 1: Breakdown of different types of nodes
+
+### Picture 2: Strongly see
+
+### Picture 3: Vote famous
