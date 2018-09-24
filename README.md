@@ -2,11 +2,12 @@
 Simple implementation of the consensus algorithm Hashgraph with clear visualizer
 
 ## Compiling and running
-Run `make`. An executable will compile. Currently only tested on OS X.
-
-Run with `./hashgraph`.
-
-Switch to view current graphs of different members using `keys "1-6"` (icon in uper-left corner inicates the current view graph owner)
+- Run `make`. An executable will compile. Currently only tested on OS X.
+- Run with `./hashgraph`.
+- Switch to view current graphs of different members using `keys "1-6"` (icon in uper-left corner inicates the current view graph owner)
+- Press `"L" key` to turn the file loggingon/off (default being to log all consused nodes in separate file for each player, logged info include the two md5 hash keys, creation timestamp and consensus timespemp, and possible payload)
+- Press `"F" key` to turn on forks, in this mode some members will occationally create false nodes, those nodes would not be approved
+- Press `Space key` to pause/resume gossiping
 
 ![alt text](https://github.com/conanwu777/hashgraph/blob/master/1.png)
 
@@ -22,7 +23,7 @@ In the project, we made an implementation in small scale of the full algorithm, 
 - Each entity(pony) in the population is represented by a vertical line
 - When Alice gossips to Bob, she looks through bob's subgraph in her current graph, finds all the new nodes in her graph but not in the subgraph, makes a list and send all of them over
 - When Bob receives the gossip, he updates his graph with all verifiable nodes Alice sent, and then he creates a new node and adds it to his own graph with two hashes linking it to the newest nodes in his and Alice's line (self-parent and gossip parent) This transaction documents the event of the gossip
-- All new nodes are colored **BLUE**
+- All new nodes are colored **BLUE** some nodes can carry a **payload** of transaction reflected in the neyworth of each member under their icons
 - For computation efficiency, every once in a while there is a layer of special noces, i.e. **whitnesses** for each active player, colored **RED**, they will be where the heavy computation (seeing, voting) is focused on
 - When whitnesses are **strongly seen** by many players, they become **famous witnesses** (colored **YELLOW**); Occationally, some whitnesses may be voted **not famous**, those nodes will be colored **GREY** and will never be famous
 - When a new node is seen by all the **uniquely famous whitnesses** of a round, a consensus timestamp is put on and the node is considered approved (colored **GREEN**)
