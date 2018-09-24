@@ -29,13 +29,16 @@ In the project, we made an implementation in small scale of the full algorithm, 
 - When a new node is seen by all the **uniquely famous whitnesses** of a round, a consensus timestamp is put on and the node is considered approved (colored **GREEN**)
 - Eventually all authentic nodes (i.e. no forking created by members) would be approved with probablity 1; eventualy there will be no discarpency between members regarding the status of nodes, regardless of the fact that members never communicate the voting
 
-### Picture 1: Breakdown of different types of nodes
-![alt text](https://github.com/conanwu777/hashgraph/blob/master/2.jpg)
+### Breakdown of different types of nodes
+![alt text](https://github.com/conanwu777/hashgraph/blob/master/5.jpg)
 
-### Picture 2: Strongly see
+### Strongly see
 - Node A can **see** node B if A is an ancestor of B and there is no fork between A and B
 - Node A can **strongly see** node B if A can see B with paths which collaboratively pass through nodes created by 2/3 of the population
 ![alt text](https://github.com/conanwu777/hashgraph/blob/master/3.jpg)
 
-### Picture 3: Vote famous
+### Vote famous
 ![alt text](https://github.com/conanwu777/hashgraph/blob/master/4.jpg)
+
+### More members
+![alt text](https://github.com/conanwu777/hashgraph/blob/master/2.jpg)
